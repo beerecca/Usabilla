@@ -2,11 +2,15 @@
 //FONTS
 @font-face{font-family:"MiloWeb-Text";src:url("./assets/fonts/MiloWeb-Text.woff") format("woff")}
 @font-face{font-family:"MiloWeb-Medium";src:url("./assets/fonts/MiloWeb-Medium.woff") format("woff")}
+@font-face{font-family:"MiloWeb-Light";src:url("./assets/fonts/MiloWeb-Light.woff") format("woff")}
 
 //VARIABLES
-$color-lightblue: #eef3f7;
+$color-usabillablue: #00A5C9;
+$color-lightblue: #b7cee0;
 $color-white: #ffffff;
 $color-text: #6b6b6b;
+$color-darkgrey: #59636c;
+$color-lightgrey: #d6d6d6;
 
 
 //BASE
@@ -41,3 +45,37 @@ body {
 	border-radius: 3px;
 	margin: 20px 0;
 }
+
+.ub-table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.ub-table--head {
+	background-color: $color-darkgrey;
+	color: $color-white;
+	font-weight: normal;
+}
+
+.ub-table--title, td {
+	padding: 20px;
+    padding-bottom: 15px;
+}
+
+.ub-table--row {
+	border-bottom: 1px solid $color-lightgrey;
+}
+
+.ub-rating {
+	font-family: MiloWeb-Light, Helvetica, sans-serif;
+	background-color: $color-usabillablue;
+	border-radius: 50%;
+	color: $color-white;
+	text-align: center;
+	width: 30px;
+	height: 30px;
+	line-height: 26px;
+	font-size: 20px;
+}
+
+
