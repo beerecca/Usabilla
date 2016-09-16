@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const PageHeader = ({title}) => {
 	return (
@@ -9,7 +9,7 @@ const PageHeader = ({title}) => {
 }
 
 PageHeader.PropTypes = {
-	title: React.PropTypes.string.isRequired
+	title: PropTypes.string.isRequired
 }
 
 export default PageHeader;

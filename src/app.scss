@@ -6,19 +6,22 @@
 
 //VARIABLES
 $color-usabillablue: #00A5C9;
-$color-lightblue: #b7cee0;
+$color-lightblue: #eef3f7;
+$color-darkblue: #59636c;
 $color-white: #ffffff;
-$color-text: #6b6b6b;
-$color-darkgrey: #59636c;
-$color-lightgrey: #d6d6d6;
-
+$color-grey1: #F9F9F9;
+$color-grey2: #DFDFDF;
+$color-grey3: #CFCFCF;
+$color-grey4: #979797;
+$color-grey5: #6B6B6B;
+$color-grey6: #303030;
 
 //BASE
 body { 
 	background-color: $color-lightblue;
 	font-size: 16px;
 	font-family: MiloWeb-Text, Helvetica, sans-serif;
-	color: $color-text;
+	color: $color-grey5;
 }
 
 .ub-pagecontainer {
@@ -42,7 +45,7 @@ body {
 .ub-panel {
 	background-color: $color-white;
 	box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.2);
-	border-radius: 3px;
+	border-radius: 5px;
 	margin: 20px 0;
 }
 
@@ -52,8 +55,8 @@ body {
 }
 
 .ub-table--head {
-	background-color: $color-darkgrey;
-	color: $color-white;
+	background-color: $color-darkblue;
+	color: $color-grey2;
 	font-weight: normal;
 }
 
@@ -63,7 +66,7 @@ body {
 }
 
 .ub-table--row {
-	border-bottom: 1px solid $color-lightgrey;
+	border-bottom: 1px solid $color-grey2;
 }
 
 .ub-rating {
@@ -73,11 +76,15 @@ body {
 	border: 2px solid $color-usabillablue;
 	color: $color-white;
 	text-align: center;
-	width: 30px;
-	height: 30px;
-	line-height: 26px;
-	font-size: 20px;
+	width: 34px;
+	height: 34px;
+	line-height: 30px;
+	font-size: 24px;
 	display: inline-block;
+
+	&:hover {
+		cursor: pointer;
+	}
 
 	&+ .ub-rating {
 		margin-left: 10px;
@@ -86,8 +93,14 @@ body {
 
 .ub-rating--inactive {
 	background-color: transparent;
-    border-color: $color-text;
-    color: $color-text;
+    border-color: $color-grey2;
+    color: $color-grey2;
+}
+
+.ub-input {
+	padding: 8px;
+	border: 2px solid $color-grey2;
+	border-radius: 5px;
 }
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const FeedbackItem = ({rating, comment, browserName, browserVersion, device, platform}) => {
 	return (
@@ -16,12 +16,12 @@ const FeedbackItem = ({rating, comment, browserName, browserVersion, device, pla
 }
 
 FeedbackItem.PropTypes = {
-	rating: React.PropTypes.number.isRequired,
-	comment: React.PropTypes.string.isRequired,
-	browserName: React.PropTypes.string.isRequired,
-	browserVersion: React.PropTypes.string.isRequired,
-	device: React.PropTypes.string.isRequired,
-	platform: React.PropTypes.string.isRequired
+	rating: PropTypes.number.isRequired,
+	comment: PropTypes.string.isRequired,
+	browserName: PropTypes.string.isRequired,
+	browserVersion: PropTypes.string.isRequired,
+	device: PropTypes.string.isRequired,
+	platform: PropTypes.string.isRequired
 }
 
 export default FeedbackItem;

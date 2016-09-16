@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import FeedbackItem from './FeedbackItem';
 
 //TODO: need to map platform to Desktop/Mobile/Tablet etc
-const FeedbackList = ({feedback, selectedRatings}) => {
+//TODO: no results
+const FeedbackList = ({feedback, selectedRatings, query}) => {
 	const filteredFeedback = feedback.filter(feedback => {
-		return selectedRatings.has(feedback.rating);
+		return selectedRatings.has(feedback.rating) && feedback.comment.includes(query);
 	});
 
 	return (
@@ -35,7 +36,9 @@ const FeedbackList = ({feedback, selectedRatings}) => {
 }
 
 FeedbackList.PropTypes = {
-	feedback: React.PropTypes.array
+	feedback: PropTypes.array,
+	selectedRatings: PropTypes.array,
+	query: PropTypes.string
 }
 
 export default FeedbackList;
