@@ -2,7 +2,11 @@ import React from 'react';
 import FeedbackItem from './FeedbackItem';
 
 //TODO: need to map platform to Desktop/Mobile/Tablet etc
-const FeedbackList = ({feedback}) => {
+const FeedbackList = ({feedback, selectedRatings}) => {
+	const filteredFeedback = feedback.filter(feedback => {
+		return selectedRatings.has(feedback.rating);
+	});
+
 	return (
 		<table className="ub-table">
 			<thead className="ub-table--head">
@@ -15,7 +19,7 @@ const FeedbackList = ({feedback}) => {
 				</tr>
 			</thead>
 			<tbody className="ub-table--body">
-				{feedback.map(feedback => {
+				{filteredFeedback.map(feedback => {
 					return <FeedbackItem 
 						key={feedback.id}
 						rating={feedback.rating} 
