@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class FeedbackItem extends Component {
-  render() {
-    return (
-      <p>Feedback item</p>
-    )
-  }
+const FeedbackItem = ({comment}) => {
+	return (
+		<p>{comment}</p>
+	)
 }
+
+FeedbackItem.PropTypes = {
+	comment: React.PropTypes.string.isRequired
+}
+
+export default FeedbackItem;

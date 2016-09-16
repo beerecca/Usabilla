@@ -7,6 +7,15 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HOST = process.env.HOST || "127.0.0.1";
 var PORT = process.env.PORT || "8888";
 
+//Allows inclusion of css files from node modules, eg normalize.css
+loaders.push({
+	test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
+	loaders: [
+		'style?sourceMap',
+		'css'
+	]
+});
+
 //Not including ExtractTextPlugin in dev config to allow for hot module reloading of styles
 loaders.push({
 	test: /[\/\\]src[\/\\].*\.scss/,

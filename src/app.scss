@@ -1,3 +1,43 @@
-.title {
-	color: grey;
+
+//FONTS
+@font-face{font-family:"MiloWeb-Text";src:url("./assets/fonts/MiloWeb-Text.woff") format("woff")}
+@font-face{font-family:"MiloWeb-Medium";src:url("./assets/fonts/MiloWeb-Medium.woff") format("woff")}
+
+//VARIABLES
+$color-lightblue: #eef3f7;
+$color-white: #ffffff;
+$color-text: #6b6b6b;
+
+
+//BASE
+body { 
+	background-color: $color-lightblue;
+	font-size: 16px;
+	font-family: MiloWeb-Text, Helvetica, sans-serif;
+	color: $color-text;
+}
+
+.ub-pagecontainer {
+	width: 90%;
+	margin: 0 auto;
+}
+
+//COMPONENTS
+.ub-pageheader {
+	background-color: $color-white;
+	width: 100%;
+	box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.2);
+	text-align: center;
+	padding: 20px 0;
+}
+
+.ub-pageheader--title {
+	font-family: MiloWeb-Medium, Helvetica, sans-serif;
+}
+
+.ub-panel {
+	background-color: $color-white;
+	box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.2);
+	border-radius: 3px;
+	margin: 20px 0;
 }

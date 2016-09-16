@@ -6,8 +6,13 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 loaders.push({
+	test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
+	loaders: [ExtractTextPlugin.extract('style'), 'css']
+});
+
+loaders.push({
 	test: /[\/\\]src[\/\\].*\.scss/,
-	loader: ExtractTextPlugin.extract('style', 'css', 'sass')
+	loaders: [ExtractTextPlugin.extract('style'), 'css', 'sass']
 });
 
 module.exports = {
