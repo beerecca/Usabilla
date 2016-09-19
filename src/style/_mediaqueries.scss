@@ -1,0 +1,18 @@
+@media (min-width: 800px) {
+	.ub-table--ratingscontainer {
+		width: 24%;
+		display: inline-block;
+		margin-right: 10%;
+	}
+
+	.ub-table--ratings {
+		margin-bottom: 0;
+	}
+
+	.ub-ratingchart { 
+		width: 66%;
+		min-height: 230px;
+		display: inline-block;
+		vertical-align: top;
+	}
+}

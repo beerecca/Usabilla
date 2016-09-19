@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 const CommentFilter = ({query, filterComments}) => {
 	return <input 
-		className="ub-input"
+		className="ub-input ub-margin-right-large ub-margin-bottom ub-padding-left"
 		type="text"
 		placeholder="Search here!"
 		aria-label="Filter Feedback"

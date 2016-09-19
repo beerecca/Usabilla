@@ -1,0 +1,17 @@
+//BASE
+html {
+	background-color: initial;
+}
+
+body { 
+	background-color: $color-lightblue;
+	font-size: 16px;
+	font-family: MiloWeb-Text, Helvetica, sans-serif;
+}
+
+.ub-pagecontainer {
+	width: 90%;
+	max-width: 1024px;
+	margin: 0 auto;
+	padding-bottom: 50px;
+}
