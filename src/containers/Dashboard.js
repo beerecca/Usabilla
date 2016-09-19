@@ -6,6 +6,7 @@ import Table from '../components/Table';
 import RatingChart from '../components/RatingChart';
 import RatingRow from '../components/RatingRow';
 import FeedbackRow from '../components/FeedbackRow';
+import Loading from '../components/Loading';
 import DashboardIcon from '../assets/DashboardIcon';
 import { ratingValues } from '../const/const';
 
@@ -20,11 +21,9 @@ export default class Dashboard extends Component {
 		fetch('http://cache.usabilla.com/example/apidemo.json')
 			.then(response => response.json())
 			.then(data => {
-				//TODO: determine how much feedback to display
-				this.setState({ feedback: data.items.slice(0, 30) });
+				this.setState({ feedback: data.items });
 			})
 			.catch(error => {
-				//TODO: handle errors and loading for the user
 				console.error('Error', error);
 			});
 	}
@@ -76,9 +75,16 @@ export default class Dashboard extends Component {
 			return (platform === 'MacIntel' || platform === 'Win32' || platform === 'Linux armv7l') ? 'Desktop' : platform;
 		};
 
-		return (
-			<div>
-				<PageHeader title="Dashboard" />
+		if (feedback.length === 0) {
+			return (
+				<div>
+					<PageHeader title="Dashboard" icon={<DashboardIcon className="ub-icon" />} />
+					<main className="ub-pagecontainer">
+						<Loading />
+					</main>
+				</div>
+			)
+		}
 
 		return (
 			<div>
@@ -101,7 +107,7 @@ export default class Dashboard extends Component {
 					</div>
 
 					<div className="ub-grid-flex ub-margin-bottom">
-					<CommentFilter query={query} filterComments={(query) => this.handleFilterComments(query)} />
+						<CommentFilter query={query} filterComments={(query) => this.handleFilterComments(query)} />
 						<RatingFilter toggleRating={(rating) => this.handleToggleRating(rating)} selectedRatings={selectedRatings} />
 					</div>
 					
