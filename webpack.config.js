@@ -32,7 +32,6 @@ module.exports = {
 		'webpack/hot/only-dev-server',
 		'./src/app.js' //Appʼs entry point
 	],
-	devtool: process.env.WEBPACK_DEVTOOL || 'cheap-module-source-map',
 	output: {
 		path: path.join(__dirname, 'dist'),
 		filename: 'bundle.js'
