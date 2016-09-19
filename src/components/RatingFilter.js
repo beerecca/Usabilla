@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import cn from 'classnames';
+import { ratingValues } from '../const/const';
 
-const RatingFilters = ({toggleRating, selectedRatings}) => {
-	const ratings = [1,2,3,4,5];
+const RatingFilter = ({toggleRating, selectedRatings}) => {
 	return (
 		<span>
-			{ratings.map(rating => {
+			{Object.keys(ratingValues).map(rating => {
 				const classNames = cn('ub-rating', {'ub-rating--inactive': !selectedRatings.has(rating)});
 				return <div key={rating} onClick={() => toggleRating(rating)} className={classNames}>{rating}</div>
 			})}
@@ -13,8 +13,9 @@ const RatingFilters = ({toggleRating, selectedRatings}) => {
 	)
 }
 
-RatingFilters.PropTypes = {
-	toggleRating: PropTypes.func.isRequired
+RatingFilter.PropTypes = {
+	toggleRating: PropTypes.func.isRequired,
+	selectedRatings: PropTypes.array.isRequired
 }
 
-export default RatingFilters;
+export default RatingFilter;
