@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import PageHeader from '../components/PageHeader';
-import FeedbackList from '../components/FeedbackList';
 import RatingFilters from '../components/RatingFilters';
 import CommentFilter from '../components/CommentFilter';
+import Table from '../components/Table';
+import RatingRow from '../components/RatingRow';
+import FeedbackRow from '../components/FeedbackRow';
+import { ratingValues } from '../const/const';
 
 export default class Dashboard extends Component {
 
 	constructor() {
 		super();
-		this.state = { feedback: [], selectedRatings: new Set([1,2,3,4,5]), query: '' };
+		this.state = { feedback: [], selectedRatings: new Set(Object.keys(ratingValues)), query: '' };
 	}
 
 	componentDidMount() {
@@ -39,15 +42,78 @@ export default class Dashboard extends Component {
 
 	render() {
 		const { feedback, selectedRatings, query } = this.state;
+
+		//Create array of ratings and rating count
+		const ratingData = feedback.reduce((array, item) => {
+			const existingRating = array.find(obj => obj.rating === item.rating);
+			if (existingRating) {
+				return array
+					.filter(obj => obj.rating !== item.rating)
+					.concat({
+						...existingRating,
+						count: existingRating.count + 1
+					});
+			} else {
+				return array.concat({
+					rating: item.rating,
+					label: ratingValues[item.rating],
+					count: 1
+				});
+			}
+		}, []);
+
+		ratingData.sort((a, b) => {
+			if (a.rating > b.rating) return 1;
+		});
+
+		const filteredFeedback = feedback.filter(feedback => {
+			return selectedRatings.has(feedback.rating.toString()) && feedback.comment.includes(query);
+		});
+
+		const getDevice = function(platform) {
+			return (platform === 'MacIntel' || platform === 'Win32' || platform === 'Linux armv7l') ? 'Desktop' : platform;
+		};
+
 		return (
 			<div>
 				<PageHeader title="Dashboard" />
 
 				<main className="ub-pagecontainer">
+
+					<div className="ub-panel ub-padding-xlarge ub-margin-bottom-xlarge">
+						<div className="ub-table--ratingscontainer">
+							<Table columns={['Rating', '# items']} className="ub-table--ratings">
+								{ratingData.map(item => {
+									return <RatingRow 
+										key={item.rating}
+										rating={item.rating}
+										label={item.label}
+										count={item.count} />
+								})}
+							</Table>
+						</div>
+						<div className="ub-ratingchart"><RatingChart feedback={feedback} /></div>
+					</div>
+
+					<div className="ub-grid-flex ub-margin-bottom">
 					<CommentFilter query={query} filterComments={(query) => this.handleFilterComments(query)} />
 					<RatingFilters toggleRating={(rating) => this.handleToggleRating(rating)} selectedRatings={selectedRatings} />
-					<div className="ub-panel">
-						<FeedbackList feedback={feedback} selectedRatings={selectedRatings} query={query} />
+					</div>
+					
+					<div className="ub-panel ub-table--scroll">
+						<Table columns={['Rating', 'Comment', 'Browser', 'Device', 'Platform']} className="ub-table--feedback">
+							{filteredFeedback.map(feedback => {
+								return <FeedbackRow 
+									key={feedback.id}
+									rating={feedback.rating} 
+									comment={feedback.comment}
+									labels={feedback.labels}
+									browserName={feedback.computed_browser.Browser}
+									browserVersion={feedback.computed_browser.Version}
+									device={getDevice(feedback.browser.platform)}
+									platform={feedback.computed_browser.Platform} />
+							})}
+						</Table>
 					</div>
 				</main>
 			</div>
