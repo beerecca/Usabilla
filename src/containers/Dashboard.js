@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PageHeader from '../components/PageHeader';
-import RatingFilters from '../components/RatingFilters';
+import RatingFilter from '../components/RatingFilter';
 import CommentFilter from '../components/CommentFilter';
 import Table from '../components/Table';
 import RatingChart from '../components/RatingChart';
 import RatingRow from '../components/RatingRow';
 import FeedbackRow from '../components/FeedbackRow';
+import DashboardIcon from '../assets/DashboardIcon';
 import { ratingValues } from '../const/const';
 
 export default class Dashboard extends Component {
@@ -79,6 +80,9 @@ export default class Dashboard extends Component {
 			<div>
 				<PageHeader title="Dashboard" />
 
+		return (
+			<div>
+				<PageHeader title="Dashboard" icon={<DashboardIcon className="ub-icon" />} />
 				<main className="ub-pagecontainer">
 
 					<div className="ub-panel ub-padding-xlarge ub-margin-bottom-xlarge">
@@ -98,7 +102,7 @@ export default class Dashboard extends Component {
 
 					<div className="ub-grid-flex ub-margin-bottom">
 					<CommentFilter query={query} filterComments={(query) => this.handleFilterComments(query)} />
-					<RatingFilters toggleRating={(rating) => this.handleToggleRating(rating)} selectedRatings={selectedRatings} />
+						<RatingFilter toggleRating={(rating) => this.handleToggleRating(rating)} selectedRatings={selectedRatings} />
 					</div>
 					
 					<div className="ub-panel ub-table--scroll">
