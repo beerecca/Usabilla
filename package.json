@@ -15,10 +15,12 @@
   "license": "MIT",
   "homepage": "https://github.com/beerecca/usabilla",
   "dependencies": {
+    "chart.js": "^2.2.2",
     "classnames": "^2.2.5",
     "node-sass": "^3.9.2",
     "normalize.css": "^4.2.0",
     "react": "15.3.0",
+    "react-chartjs-2": "^1.2.5",
     "react-dom": "15.3.0",
     "sass-loader": "^4.0.1"
   },

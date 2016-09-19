@@ -3,6 +3,7 @@ import PageHeader from '../components/PageHeader';
 import RatingFilters from '../components/RatingFilters';
 import CommentFilter from '../components/CommentFilter';
 import Table from '../components/Table';
+import RatingChart from '../components/RatingChart';
 import RatingRow from '../components/RatingRow';
 import FeedbackRow from '../components/FeedbackRow';
 import { ratingValues } from '../const/const';
